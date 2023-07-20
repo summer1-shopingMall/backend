@@ -1,9 +1,9 @@
-package com.example.yanghyemin.config;
+package com.example.shoppingmall.config;
 
-import com.example.yanghyemin.security.CustomAccessDeniedHandler;
-import com.example.yanghyemin.security.CustomAuthenicationEntryPoint;
-import com.example.yanghyemin.security.JwtAuthenicationFilter;
-import com.example.yanghyemin.security.JwtTokenProvider;
+import com.example.shoppingmall.security.CustomAccessDeniedHandler;
+import com.example.shoppingmall.security.CustomAuthenicationEntryPoint;
+import com.example.shoppingmall.security.JwtAuthenicationFilter;
+import com.example.shoppingmall.security.JwtTokenProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

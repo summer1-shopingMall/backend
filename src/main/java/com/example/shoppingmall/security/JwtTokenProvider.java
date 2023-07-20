@@ -1,6 +1,5 @@
-package com.example.yanghyemin.security;
+package com.example.shoppingmall.security;
 
-import com.example.yanghyemin.service.UserDetailService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

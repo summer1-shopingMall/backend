@@ -1,4 +1,4 @@
-package com.example.yanghyemin.config;
+package com.example.shoppingmall.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

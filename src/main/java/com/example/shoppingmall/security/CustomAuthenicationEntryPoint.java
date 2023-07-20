@@ -1,4 +1,4 @@
-package com.example.yanghyemin.security;
+package com.example.shoppingmall.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.AuthenticationException;

@@ -1,4 +1,4 @@
-package com.example.yanghyemin.security;
+package com.example.shoppingmall.security;
 
 public enum CommonResponse {
 

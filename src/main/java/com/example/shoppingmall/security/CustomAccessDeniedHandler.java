@@ -1,4 +1,4 @@
-package com.example.yanghyemin.security;
+package com.example.shoppingmall.security;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

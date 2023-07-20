@@ -1,4 +1,4 @@
-package com.example.yanghyemin.config;
+package com.example.shoppingmall.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

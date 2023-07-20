@@ -1,4 +1,4 @@
-package com.example.yanghyemin.config;
+package com.example.shoppingmall.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;
