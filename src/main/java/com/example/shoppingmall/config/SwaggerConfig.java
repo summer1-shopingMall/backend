@@ -23,7 +23,7 @@ public class SwaggerConfig {
 
         Info info = new Info()
                 .version("v1.0.0")
-                .title("기말고사")
+                .title("여름방학 프로젝트")
                 .description("API Description");
 
         return new OpenAPI()
