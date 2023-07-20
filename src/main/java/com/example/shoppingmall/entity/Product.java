@@ -26,6 +26,7 @@ public class Product {
 
   @NotNull
   private int stock;
+  //잔여량
 
   @NotNull
   private boolean status;
@@ -39,6 +40,11 @@ public class Product {
 
   private int views;
 
+  private boolean like;
+  //찜 기능(이게 좋다 이런거)
+
   private LocalDateTime created_at;
+  //상품 등록 날자
   private LocalDateTime updated_at;
+  //상품 수정 날자
 }

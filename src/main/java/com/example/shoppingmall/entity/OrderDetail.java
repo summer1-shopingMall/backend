@@ -17,6 +17,7 @@ public class OrderDetail {
 
   @NotNull
   private Long orderId;
+  //제품번호
 
   @NotNull
   private Long productId;
@@ -28,9 +29,10 @@ public class OrderDetail {
 
   @NotNull
   private String status;
+  //배송중인지 결제가되었는지 상태를 보여준다
 
   private boolean refundCheck;
-
+  //주문취소 상태 알림
   private LocalDateTime created_at;
   private LocalDateTime updated_at;
 }

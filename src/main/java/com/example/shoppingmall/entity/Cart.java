@@ -21,6 +21,9 @@ public class Cart {
   private Long userId;
 
   @NotNull
+  private int productPrice;
+
+  @NotNull
   private int productCount;
 
   private LocalDateTime updated_at;

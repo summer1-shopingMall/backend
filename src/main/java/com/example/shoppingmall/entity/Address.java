@@ -1,23 +1,28 @@
 package com.example.shoppingmall.entity;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
 @Table(name = "address")
 public class Address {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @NotNull
-  private String zipCode;
+    @NotNull
+    private Long userNid;
+    //회원가입시 생성되는 고유넘버
 
-  @NotNull
-  private String address;
+    @NotNull
+    private String zipCode;
 
-  private String addressDetail;
+    @NotNull
+    private String address;
+
+    private String addressDetail;
+
 }

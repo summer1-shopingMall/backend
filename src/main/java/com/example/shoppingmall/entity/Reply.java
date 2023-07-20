@@ -24,9 +24,13 @@ public class Reply {
   @NotNull
   private Long userId;
 
+  @NotNull
+  private int star;
+
   private LocalDateTime replyDate;
 
-  private Long replyOrginId;
+  //이거 밑에는 댓글 대댓글에 필요한
+  private Long replyOriginId;
 
   private int replyOrder;
   private int replyDepth;

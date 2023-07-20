@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "inquiry")
 public class Inquiry {
+  //문의 테이블
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -27,7 +28,6 @@ public class Inquiry {
   private LocalDateTime inquiryDate;
 
   private Long inquiryOrginId;
-
   private int inquiryOrder;
   private int inquiryDepth;
 }

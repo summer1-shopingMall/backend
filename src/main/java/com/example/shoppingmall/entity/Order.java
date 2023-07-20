@@ -30,4 +30,7 @@ public class Order {
   private String receiverPhone;
 
   private LocalDateTime orderDate;
+
+  private String status;
+  //환불하였을때 상태를 알수있게끔
 }
