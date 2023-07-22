@@ -24,12 +24,14 @@ public class Product {
   @NotNull
   private int price;
 
-  @NotNull
   private int stock;
   //잔여량
 
   @NotNull
-  private boolean status;
+  private int status;
+
+  @NotNull
+  private int cellCount;
 
   @NotNull
   private Text spec;

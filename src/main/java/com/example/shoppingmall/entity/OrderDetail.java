@@ -28,7 +28,7 @@ public class OrderDetail {
   private int count;
 
   @NotNull
-  private String status;
+  private int status;
   //배송중인지 결제가되었는지 상태를 보여준다
 
   private boolean refundCheck;

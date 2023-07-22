@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/product/**").permitAll()
             .antMatchers("/board/**").permitAll()
             .antMatchers("/order/**").permitAll()
-            .antMatchers("/mbti/**").permitAll()
+            .antMatchers("/ProductController/**").permitAll()
             .anyRequest().hasAnyRole("USER","ADMIN")
             .and()
             .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
