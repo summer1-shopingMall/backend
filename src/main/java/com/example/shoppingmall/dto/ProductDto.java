@@ -26,7 +26,5 @@ public class ProductDto {
 
     private int views;
 
-    private boolean like;
-
     private LocalDateTime created_at;
 }

@@ -21,4 +21,24 @@ public class ProductDaoImpl implements ProductDao
     {
         return  productRepository.findAll();
     }
+
+    @Override
+    public List<Product> searchProduct(String productName) {
+        return productRepository.findByproductName(productName);
+    }
+
+    @Override
+    public List<Product> priceSort(String sortPrice) {
+        String sortDesc = "높은 가격순";
+        if(sortDesc.equals(sortPrice))
+        {
+            return productRepository.findByOrderByPriceDesc();
+        }
+        return productRepository.findByOrderByPriceAsc();
+    }
+
+    @Override
+    public List<Product> searchCategory(String category) {
+        return productRepository.findBycategory(category);
+    }
 }

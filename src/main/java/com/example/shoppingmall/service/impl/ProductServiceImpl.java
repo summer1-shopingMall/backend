@@ -20,4 +20,20 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> selectAllProduct() {
         return productDao.selectAllProduct();
     }
+
+    @Override
+    public List<Product> searchProduct(String productName) {
+        return productDao.searchProduct(productName);
+    }
+
+    @Override
+    public List<Product> priceSort(String sortPrice) {
+        return productDao.priceSort(sortPrice);
+    }
+
+    @Override
+    public List<Product> searchCategory(String category) {
+        return productDao.searchCategory(category);
+    }
+
 }
