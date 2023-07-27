@@ -42,11 +42,11 @@ public class Product {
 
   private int views;
 
-  private boolean like;
+  private boolean like1;
   //찜 기능(이게 좋다 이런거)
 
-  private LocalDateTime created_at;
+  private LocalDateTime createdAt;
   //상품 등록 날자
-  private LocalDateTime updated_at;
+  private LocalDateTime updatedAt;
   //상품 수정 날자
 }
