@@ -37,13 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 , "/cocktail/search", "/cocktail/alcohol","/cocktail/id"
                 , "/ingredients/list", "/ingredients/byName")
             .permitAll()
-            .antMatchers(HttpMethod.GET, "/user/**").permitAll() //
-            .antMatchers(HttpMethod.GET, "/cocktail/**").permitAll()
             .antMatchers("**exception**").permitAll()
             .antMatchers("/product/**").permitAll()
-            .antMatchers("/board/**").permitAll()
-            .antMatchers("/order/**").permitAll()
-            .antMatchers("/ProductController/**").permitAll()
             .anyRequest().hasAnyRole("USER","ADMIN")
             .and()
             .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())

@@ -1,6 +1,6 @@
-package com.example.shoppingmall.config.dao.impl;
+package com.example.shoppingmall.dao.impl;
 
-import com.example.shoppingmall.config.dao.ProductDao;
+import com.example.shoppingmall.dao.ProductDao;
 import com.example.shoppingmall.entity.Product;
 import com.example.shoppingmall.repository.ProductRepository;
 import org.springframework.stereotype.Component;

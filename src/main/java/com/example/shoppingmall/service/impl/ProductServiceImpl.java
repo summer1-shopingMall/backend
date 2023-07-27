@@ -1,6 +1,6 @@
 package com.example.shoppingmall.service.impl;
 
-import com.example.shoppingmall.config.dao.ProductDao;
+import com.example.shoppingmall.dao.ProductDao;
 import com.example.shoppingmall.entity.Product;
 import com.example.shoppingmall.service.ProductService;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.shoppingmall.config.dao;
+package com.example.shoppingmall.dao;
 
 import com.example.shoppingmall.entity.Product;
 
