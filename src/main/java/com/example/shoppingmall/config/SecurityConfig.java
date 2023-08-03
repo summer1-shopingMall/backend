@@ -1,11 +1,10 @@
 package com.example.shoppingmall.config;
 
-import com.example.shoppingmall.security.CustomAccessDeniedHandler;
-import com.example.shoppingmall.security.CustomAuthenicationEntryPoint;
-import com.example.shoppingmall.security.JwtAuthenicationFilter;
-import com.example.shoppingmall.security.JwtTokenProvider;
+import com.example.shoppingmall.config.security.CustomAccessDeniedHandler;
+import com.example.shoppingmall.config.security.CustomAuthenicationEntryPoint;
+import com.example.shoppingmall.config.security.JwtAuthenicationFilter;
+import com.example.shoppingmall.config.security.JwtTokenProvider;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -31,15 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.httpBasic().disable().csrf().disable().sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/sign-api/sing-in"
-                , "/sign-api/sing-up", "/sign-api/exception", "/cocktail/list"
-                , "/cocktail/createdAt", "/cocktail/byName", "/cocktail/ingredients"
-                , "/cocktail/search", "/cocktail/alcohol","/cocktail/id"
-                , "/ingredients/list", "/ingredients/byName","/product/listProduct")
+            .authorizeRequests().antMatchers("/sign-api/user-sign-in", "/sign-api/user-sign-up", "/sign-api/exception"
+                ,"/product/listProduct")
             .permitAll()
             .antMatchers("**exception**").permitAll()
             .antMatchers("/product/**").permitAll()
-            .anyRequest().hasAnyRole("USER","ADMIN")
+            .anyRequest().hasAnyRole("USER","ADMIN")    //롤 추가하려면 여기에
             .and()
             .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
             .and()
