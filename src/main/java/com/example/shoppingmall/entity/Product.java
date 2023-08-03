@@ -3,10 +3,8 @@ package com.example.shoppingmall.entity;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.attoparser.dom.Text;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -34,17 +32,17 @@ public class Product {
   @NotNull
   private int cellCount;
 
-  @NotNull
-  private Text spec;
+  private String spec;
 
-  private Text content;
+  private String content;
 
-  private Text url;
+  private String url;
 
   private int views;
 
-  private LocalDateTime createdAt;
+  private String createdAt;
   //상품 등록 날자
-  private LocalDateTime updatedAt;
+  private String updatedAt;
   //상품 수정 날자
+
 }

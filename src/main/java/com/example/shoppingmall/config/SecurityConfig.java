@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 , "/sign-api/sing-up", "/sign-api/exception", "/cocktail/list"
                 , "/cocktail/createdAt", "/cocktail/byName", "/cocktail/ingredients"
                 , "/cocktail/search", "/cocktail/alcohol","/cocktail/id"
-                , "/ingredients/list", "/ingredients/byName")
+                , "/ingredients/list", "/ingredients/byName","/product/listProduct")
             .permitAll()
             .antMatchers("**exception**").permitAll()
             .antMatchers("/product/**").permitAll()
