@@ -84,5 +84,34 @@ public class ProductController {
         return ResponseEntity.ok(insertProduct);
     }
 
+    @GetMapping("/updateProduct")//상품수정시 불러오기
+    public ResponseEntity<Product> updateProduct(HttpServletRequest request,@RequestParam Long id, @RequestParam String category, @RequestParam String productName, @RequestParam int price,
+                                       @RequestParam int stock, @RequestParam int status, @RequestParam int cellCount, @RequestParam String spec,
+                                       @RequestParam String content, @RequestParam String url)
+    {
+        Long upt_id = Long.valueOf(request.getParameter("id"));
+        String upt_category = request.getParameter("category");
+        String upt_productName = request.getParameter("productName");
+        int upt_price = Integer.parseInt(request.getParameter("price"));
+        int upt_stock = Integer.parseInt(request.getParameter("stock"));
+        int upt_status = Integer.parseInt(request.getParameter("status"));
+        int upt_cellCount = Integer.parseInt(request.getParameter("cellCount"));
+        String upt_spec = request.getParameter("spec");
+        String upt_content = request.getParameter("content");
+        String upt_url = request.getParameter("url");
+        //시간
+        LocalDateTime beforeDate = LocalDateTime.now();
+        DateTimeFormatter afterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String ins_updateAt = beforeDate.format(afterDate);
+
+        Product updateProduct = productService.updateProduct(upt_id, upt_category, upt_productName, upt_price, upt_stock,
+                upt_status, upt_cellCount, upt_spec, upt_content, upt_url, ins_updateAt);
+
+        if (updateProduct != null) {
+            return ResponseEntity.ok(updateProduct);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
