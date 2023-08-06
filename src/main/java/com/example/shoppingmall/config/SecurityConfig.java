@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll()
             .antMatchers("**exception**").permitAll()
             .antMatchers("/product/**").permitAll()
+            .antMatchers("/sign-api/**").permitAll()
             .anyRequest().hasAnyRole("USER","ADMIN")    //롤 추가하려면 여기에
             .and()
             .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
