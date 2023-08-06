@@ -1,11 +1,10 @@
 package com.example.shoppingmall.entity;
 
-
+import com.sun.istack.NotNull;
 import lombok.Data;
 import org.attoparser.dom.Text;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity

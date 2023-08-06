@@ -1,10 +1,10 @@
 package com.example.shoppingmall.entity;
 
-
+import com.sun.istack.NotNull;
 import lombok.Data;
+import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
