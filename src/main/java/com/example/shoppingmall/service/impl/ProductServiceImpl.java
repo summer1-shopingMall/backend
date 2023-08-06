@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> searchProduct(String productName) {
         List<Product> searchProduct = productRepository.findByproductName(productName);
         System.out.println("서비스에서"+searchProduct);
-        return searchProduct;
+        return searchProduct;   //변경테스트
     }
 
     @Override
