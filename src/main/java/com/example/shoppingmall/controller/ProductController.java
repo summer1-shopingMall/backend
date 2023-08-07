@@ -1,8 +1,10 @@
 package com.example.shoppingmall.controller;
 
+import com.example.shoppingmall.dto.ProductResponseDto;
 import com.example.shoppingmall.entity.Product;
 import com.example.shoppingmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -115,11 +117,9 @@ public class ProductController {
     }
 
     @GetMapping("/getProduct")
-    public Optional<Product> getProduct (HttpServletRequest request, @RequestParam Long id)
-    {
-        Long get_id = Long.valueOf(request.getParameter("id"));
-        Optional<Product> getProduct = productService.getProduct(get_id);
-        return getProduct;
+    public ResponseEntity<ProductResponseDto> productById(Long number) {
+        ProductResponseDto productResponseDto = productService.getProduct(number);
+        return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
     }
 
 }

@@ -1,5 +1,8 @@
 package com.example.shoppingmall.service.impl;
 
+import com.example.shoppingmall.dto.CartResponseDto;
+import com.example.shoppingmall.dto.ProductResponseDto;
+import com.example.shoppingmall.entity.Cart;
 import com.example.shoppingmall.entity.Product;
 import com.example.shoppingmall.repository.ProductRepository;
 import com.example.shoppingmall.service.ProductService;
@@ -103,9 +106,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<Product> getProduct(Long id) {
-        Optional<Product> getProduct = productRepository.findById(id);
-        return getProduct;
+    public ProductResponseDto getProduct(Long id) {
+        Product product = productRepository.getById(id);
+        ProductResponseDto productResponseDto = new ProductResponseDto();
+        productResponseDto.setCategory(product.getCategory());
+        productResponseDto.setProductName(product.getProductName());
+        productResponseDto.setPrice(product.getPrice());
+        productResponseDto.setStock(product.getStock());
+        productResponseDto.setStatus(product.getStatus());
+        productResponseDto.setCellCount(product.getCellCount());
+        productResponseDto.setSpec(product.getSpec());
+        productResponseDto.setContent(product.getContent());
+        productResponseDto.setUrl(product.getUrl());
+        productResponseDto.setViews(product.getViews());
+
+        return productResponseDto;
     }
 
 

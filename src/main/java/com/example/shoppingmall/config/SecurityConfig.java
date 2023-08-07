@@ -24,35 +24,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.httpBasic().disable().csrf().disable().sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/sign-api/user-sign-in", "/sign-api/user-sign-up", "/sign-api/exception"
-                ,"/product/listProduct")
-            .permitAll()
-            .antMatchers("**exception**").permitAll()
-            .antMatchers("/product/**").permitAll()
-            .antMatchers("/sign-api/**").permitAll()
-            .anyRequest().hasAnyRole("USER","ADMIN")    //롤 추가하려면 여기에
+        httpSecurity
+            .httpBasic().disable()
+            .csrf().disable()
+            .cors().disable()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
+            .authorizeRequests()
+            .antMatchers("/product/**", "/sign-api/**", "/cart/**").permitAll()
+            .anyRequest().hasAnyRole("USER", "ADMIN")
             .and()
-            .exceptionHandling().authenticationEntryPoint(new CustomAuthenicationEntryPoint())
+            .exceptionHandling()
+            .accessDeniedHandler(new CustomAccessDeniedHandler())
+            .authenticationEntryPoint(new CustomAuthenicationEntryPoint())
             .and()
             .addFilterBefore(new JwtAuthenicationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
-        webSecurity.ignoring().antMatchers("/v2/api-docs", "/v3/api-docs/**", "/swagger-resources/**", "/swagger-ui/**","/swagger-ui/index.html", "/webjars/**", "/swagger/**", "/sign-api/exception");
+        webSecurity
+            .ignoring()
+            .antMatchers("/v2/api-docs", "/v3/api-docs/**", "/swagger-resources/**", "/swagger-ui/**", "/swagger-ui/index.html", "/webjars/**", "/swagger/**", "/sign-api/exception");
     }
 }
-
-
-
-
-
-

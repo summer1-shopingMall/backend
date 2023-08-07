@@ -1,5 +1,6 @@
 package com.example.shoppingmall.service;
 
+import com.example.shoppingmall.dto.ProductResponseDto;
 import com.example.shoppingmall.entity.Product;
 import org.springframework.http.ResponseEntity;
 
@@ -18,5 +19,5 @@ public interface ProductService {
                               int upt_status, int upt_cellCount, String upt_spec, String upt_content,
                               String upt_url, String upt_updateAt);
 
-        Optional<Product> getProduct(Long id);
+        ProductResponseDto getProduct(Long id);
 }

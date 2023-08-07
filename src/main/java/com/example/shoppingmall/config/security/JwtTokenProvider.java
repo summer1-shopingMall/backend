@@ -49,6 +49,10 @@ public class JwtTokenProvider {
 
     public Authentication getAuthenication(String token) {
         System.out.println("[getAuthenication] 토큰 인증 정보 조회");
+        if (userDetailService == null) {
+            // userDetailService가 null인 경우에 대한 처리
+            return null;
+        }
         UserDetails userDetails = userDetailService.loadUserByUsername(this.getUsername(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }

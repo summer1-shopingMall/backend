@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.shoppingmall.service.impl.CartServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-07T04:57:41" hostname="LAPTOP-U62RP1C8" time="0.695">
+  <properties/>
+  <testcase name="insertCart()" classname="com.example.shoppingmall.service.impl.CartServiceImplTest" time="0.695"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
