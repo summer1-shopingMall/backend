@@ -33,7 +33,7 @@ public class CartController {
   }
 
   @PostMapping("/insert")
-  //@PreAuthorize("hasAnyRole('ROLE_USER')")
+  @PreAuthorize("hasAnyRole('ROLE_USER')")
   public ResponseEntity<CartResponseDto> insertCart(HttpServletRequest request, @RequestParam Long productId, @RequestParam int stock) throws Exception {
     String userId = jwtTokenProvider.getUsername(request.getHeader("X-AUTH-TOKEN"));
     UserResponseDto userResponseDto = userService.userByUserId(userId);
@@ -59,7 +59,7 @@ public class CartController {
 
 
   @DeleteMapping("/delete")
-  //@PreAuthorize("hasAnyRole('ROLE_USER')")
+  @PreAuthorize("hasAnyRole('ROLE_USER')")
   public ResponseEntity<String> deleteOrder(HttpServletRequest request, @RequestParam Long id) throws Exception {
     cartService.delectCart(id);
     return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다.");
@@ -67,13 +67,14 @@ public class CartController {
   }
 
   @GetMapping("/cartDetail")
+  @PreAuthorize("hasAnyRole('ROLE_USER')")
   public ResponseEntity<CartResponseDto> cocktailById(Long id) {
     CartResponseDto cartResponseDto = cartService.selectCart(id);
     return ResponseEntity.status(HttpStatus.OK).body(cartResponseDto);
   }
 
   @GetMapping("/listByUserId")
-  //@PreAuthorize("hasAnyRole('ROLE_USER')")
+  @PreAuthorize("hasAnyRole('ROLE_USER')")
   public ResponseEntity<List<CartResponseDto>> listByUserId(HttpServletRequest request, @RequestParam Long uId) {
     List<CartResponseDto> cartResponseDtoList = cartService.listOrderByUserId(uId);
     return ResponseEntity.status(HttpStatus.OK).body(cartResponseDtoList);
