@@ -31,6 +31,7 @@ public class SignServiceImpl implements SignService {
   public SignUpResultDto UserSignUp(String userId, String password, String userName, String email, String phone) {
     System.out.println("[signUp] 회원가입");
     User user;
+    //password를 암호화해서 저장, 판매자가 아닌 유저회원가입이기때문에 role을 user로 고정해놓은 것.
     user = User.builder().userId(userId).userName(userName).email(email).phone(phone).type("general")
           .password(passwordEncoder.encode(password)).roles(Collections.singletonList("ROLE_USER")).build();
 
@@ -52,7 +53,7 @@ public class SignServiceImpl implements SignService {
       throw new RuntimeException();
     }
 
-    SignInResultDto signInResultDto = SignInResultDto.builder().token(jwtTokenProvider.createToken(String.valueOf(user.getUserId()), user.getRoles())).build();
+    SignInResultDto signInResultDto = SignInResultDto.builder().token(jwtTokenProvider.createToken(String.valueOf(user.getUserId()), user.getRoles())).userId(id).build();
     setSuccessResult(signInResultDto);
 
     return signInResultDto;

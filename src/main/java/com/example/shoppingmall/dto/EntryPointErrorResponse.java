@@ -10,7 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class EntryPointErrorResponse {
-
-  private String msg;
+  //오류 메시지
+  private String msg; 
 
 }
