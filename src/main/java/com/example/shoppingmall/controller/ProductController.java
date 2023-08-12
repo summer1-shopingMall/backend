@@ -122,4 +122,12 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
     }
 
+    @DeleteMapping("/deleteProduct")
+    public ResponseEntity<String> deleteProduct(HttpServletRequest request, @RequestParam Long id)
+    {
+        Long delete_id = Long.valueOf(request.getParameter("id"));
+        ResponseEntity<String> deleteProduct= productService.deleteProduct(delete_id);
+        return deleteProduct;
+    }
+
 }

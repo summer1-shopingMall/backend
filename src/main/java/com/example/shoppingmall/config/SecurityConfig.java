@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests()
             .antMatchers("/product/**", "/sign-api/**", "/cart/**").permitAll()
-            .anyRequest().hasAnyRole("USER", "ADMIN")
+            .anyRequest().hasAnyRole("USER", "ADMIN","SELLER")
             .and()
             .exceptionHandling()
             .accessDeniedHandler(new CustomAccessDeniedHandler())

@@ -20,4 +20,6 @@ public interface ProductService {
                               String upt_url, String upt_updateAt);
 
         ProductResponseDto getProduct(Long id);
+
+        ResponseEntity<String> deleteProduct(Long id);
 }

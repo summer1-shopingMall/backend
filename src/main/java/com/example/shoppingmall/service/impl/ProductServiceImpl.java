@@ -122,4 +122,16 @@ public class ProductServiceImpl implements ProductService {
 
         return productResponseDto;
     }
+
+    @Override
+    public ResponseEntity<String> deleteProduct(Long id){
+        try
+        {
+            productRepository.deleteById(id);
+            return ResponseEntity.ok("삭제 완료");
+        }catch (Exception e)
+        {
+            return ResponseEntity.ok("삭제 불가");
+        }
+    }
 }
