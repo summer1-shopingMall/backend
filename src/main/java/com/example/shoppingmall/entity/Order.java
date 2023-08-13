@@ -13,13 +13,11 @@ public class Order {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @NotNull
-  private String userId;
-
+  @ManyToOne
+  @JoinColumn(name = "seller_id", nullable = false)
+  private Seller seller;
   @NotNull
   private String address1;
-
   @NotNull
   private String address2;
 

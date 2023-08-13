@@ -1,6 +1,7 @@
 package com.example.shoppingmall.service.impl;
 
 import com.example.shoppingmall.entity.Order;
+import com.example.shoppingmall.entity.Seller;
 import com.example.shoppingmall.repository.OrderRepository;
 import com.example.shoppingmall.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public List<Order> SelectOrderList() {
-        return orderRepository.findAll();
+    public List<Order> SelectOrderList(Seller seller) {
+        return orderRepository.findBySeller(seller);
     }
 
     @Override

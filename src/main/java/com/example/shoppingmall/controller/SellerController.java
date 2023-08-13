@@ -2,9 +2,13 @@ package com.example.shoppingmall.controller;
 
 import com.example.shoppingmall.entity.Order;
 import com.example.shoppingmall.entity.Product;
+import com.example.shoppingmall.entity.Seller;
+import com.example.shoppingmall.entity.User;
 import com.example.shoppingmall.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +27,11 @@ public class SellerController {
     }
 
     @GetMapping("/orderList")
-    public List<Order> SelectOrderList()
+    public ResponseEntity<List<Order>> SelectOrderList(Authentication authentication)
     {
-        List<Order>selectOrderList = sellerService.SelectOrderList();
-        return selectOrderList;
+        Seller seller = (Seller)authentication.getPrincipal();
+        List<Order>selectOrderList = sellerService.SelectOrderList(seller);
+        return new ResponseEntity<>(selectOrderList, HttpStatus.OK);
     }
 
     @GetMapping("/updateOrder")

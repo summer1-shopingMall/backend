@@ -75,7 +75,6 @@ public class ProductServiceImpl implements ProductService {
         product.setUrl(ins_url);
         product.setCreatedAt(ins_createAt);
         product.setUpdatedAt(ins_updateAt);
-
         Product insertProduct = productRepository.save(product);
 
         return ResponseEntity.ok(insertProduct);
@@ -100,6 +99,7 @@ public class ProductServiceImpl implements ProductService {
             product.setContent(upt_content);
             product.setUrl(upt_url);
             product.setUpdatedAt(upt_updateAt);
+
             return productRepository.save(product);
         }
         return null;
