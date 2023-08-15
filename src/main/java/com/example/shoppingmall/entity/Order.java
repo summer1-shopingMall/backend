@@ -17,6 +17,10 @@ public class Order {
   @JoinColumn(name = "seller_id", nullable = false)
   private Seller seller;
   @NotNull
+  private String productName;
+  @NotNull
+  private String userName;
+  @NotNull
   private String address1;
   @NotNull
   private String address2;

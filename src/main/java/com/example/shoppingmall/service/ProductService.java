@@ -5,7 +5,6 @@ import com.example.shoppingmall.entity.Product;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ProductService {
         List<Product> selectAllProduct();
@@ -22,4 +21,7 @@ public interface ProductService {
         ProductResponseDto getProduct(Long id);
 
         ResponseEntity<String> deleteProduct(Long id);
+
+        boolean checkProduct(String userName);
+
 }

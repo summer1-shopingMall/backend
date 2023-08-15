@@ -1,9 +1,8 @@
 package com.example.shoppingmall.service.impl;
 
-import com.example.shoppingmall.dto.CartResponseDto;
 import com.example.shoppingmall.dto.ProductResponseDto;
-import com.example.shoppingmall.entity.Cart;
 import com.example.shoppingmall.entity.Product;
+import com.example.shoppingmall.repository.OrderRepository;
 import com.example.shoppingmall.repository.ProductRepository;
 import com.example.shoppingmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +11,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, OrderRepository orderRepository) {
         this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
     }
 
     @Override
@@ -133,5 +133,11 @@ public class ProductServiceImpl implements ProductService {
         {
             return ResponseEntity.ok("삭제 불가");
         }
+    }
+
+    @Override
+    public boolean checkProduct(String userName)
+    {
+        return orderRepository.existsByUserName(userName);
     }
 }
