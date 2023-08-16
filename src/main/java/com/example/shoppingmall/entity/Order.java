@@ -2,6 +2,8 @@ package com.example.shoppingmall.entity;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "order")
+@NoArgsConstructor
 public class Order {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,8 @@ public class Order {
   private Seller seller;
   @NotNull
   private String productName;
+  @NotNull
+  private String userId;
   @NotNull
   private String userName;
   @NotNull
