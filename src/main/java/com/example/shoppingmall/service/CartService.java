@@ -15,8 +15,6 @@ public interface CartService {
   //장바구니 여러개 한번에 삭제
 
 
-  //장바구니 한개 상세보기
-  CartResponseDto selectCart(Long id);
 
   //유저별 장바구니 리스트
   List<CartResponseDto> listOrderByUserId(String userId);

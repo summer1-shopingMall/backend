@@ -79,14 +79,6 @@ public class CartController {
 
   }
 
-  @GetMapping("/cartDetail")
-  @PreAuthorize("hasAnyRole('ROLE_USER')")
-  public ResponseEntity<CartResponseDto> cocktailById(Long id) {
-    CartResponseDto cartResponseDto = cartService.selectCart(id);
-    return ResponseEntity.status(HttpStatus.OK).body(cartResponseDto);
-  }
-
-
 
 
 }

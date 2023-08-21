@@ -44,12 +44,6 @@ public class CartServiceImpl implements CartService {
     cartRepository.deleteById(id);
   }
 
-  @Override
-  public CartResponseDto selectCart(Long id) {
-    Cart cart = cartRepository.getById(id);
-    CartResponseDto cartResponseDto = new CartResponseDto(cart);
-    return cartResponseDto;
-  }
 
   @Override
   public List<CartResponseDto> listOrderByUserId(String userId) {
