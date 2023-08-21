@@ -76,6 +76,7 @@ public class CartController {
   @GetMapping("/listByUserId")
   @PreAuthorize("hasAnyRole('ROLE_USER')")
   public ResponseEntity<List<CartResponseDto>> listByUserId(HttpServletRequest request, @RequestParam Long uId) {
+    //userid로 검색해서 특정 user의 cart list 출력
     List<CartResponseDto> cartResponseDtoList = cartService.listOrderByUserId(uId);
     return ResponseEntity.status(HttpStatus.OK).body(cartResponseDtoList);
   }
