@@ -79,6 +79,8 @@ public class CartController {
     //userid로 검색해서 특정 user의 cart list 출력
     List<CartResponseDto> cartResponseDtoList = cartService.listOrderByUserId(uId);
     return ResponseEntity.status(HttpStatus.OK).body(cartResponseDtoList);
+
+    //로그인 시 로그인한 user의 cart list 출력
   }
 
 
