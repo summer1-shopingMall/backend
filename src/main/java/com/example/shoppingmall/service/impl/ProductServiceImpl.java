@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ResponseEntity<Product> insertProduct(String ins_category, String ins_productName, int ins_price, int ins_stock,
+    public ResponseEntity<Product> insertProduct(String ins_category, String ins_productName, String ins_sellerId,int ins_price, int ins_stock,
                                                  int ins_status, int ins_cellCount, String ins_spec, String ins_content,
                                                  String ins_url, String ins_createAt, String ins_updateAt)
     {
@@ -67,6 +67,7 @@ public class ProductServiceImpl implements ProductService {
         product.setCategory(ins_category);
         product.setProductName(ins_productName);
         product.setPrice(ins_price);
+        product.setSellerId(ins_sellerId);
         product.setStock(ins_stock);
         product.setStatus(ins_status);
         product.setCellCount(ins_cellCount);

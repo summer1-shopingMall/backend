@@ -19,6 +19,9 @@ public class Product {
   private String category;
 
   @NotNull
+  private String sellerId;
+
+  @NotNull
   private String productName;
 
   @NotNull

@@ -42,20 +42,26 @@ public class CommentController {
     }
 
     @PostMapping("/insertQnA")
-    public ResponseEntity<ProductQnA> insertQnA(HttpServletRequest request, Principal principal, @RequestParam String userId)
+    public ResponseEntity<ProductQnA> insertQnA(HttpServletRequest request, Principal principal, @RequestParam String text)
     {
+
         ResponseEntity<ProductQnA> insertQnA = null;
+        System.out.println(principal);
         if (principal != null)
         {
             String ins_name = principal.getName();
             String ins_text = request.getParameter("text");
             insertQnA = commentService.insertQnA(ins_name, ins_text);
+        }else
+        {
+            System.out.println("로그인을 먼저 해주세요");
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(insertQnA).getBody();
     }
 
     @PostMapping("/insertComment")
-    public ResponseEntity<ProductComment> insertComment(HttpServletRequest request, Principal principal, @RequestParam String userId)
+    public ResponseEntity<ProductComment> insertComment(HttpServletRequest request, Principal principal, @RequestParam String text)
     {
         ResponseEntity<ProductComment> insertComment = null;
         if (principal != null)
@@ -66,6 +72,10 @@ public class CommentController {
             if (checkProduct)
             {
                 insertComment = commentService.insertComment(ins_name, ins_text);
+            }else
+            {
+                System.out.println("로그인을 먼저 해주세요");
+                return ResponseEntity.notFound().build();
             }
         }
         return ResponseEntity.ok(insertComment).getBody();

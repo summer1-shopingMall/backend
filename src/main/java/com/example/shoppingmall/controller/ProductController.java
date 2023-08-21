@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -16,7 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-
     private final ProductService productService;
     @Autowired
     public ProductController(ProductService productService) {
@@ -60,10 +60,11 @@ public class ProductController {
     }
 
     @GetMapping("/insertProduct")//상품 등록
-    public ResponseEntity<Product> insertProduct(HttpServletRequest request, @RequestParam String category, @RequestParam String productName, @RequestParam int price,
-                                        @RequestParam int stock, @RequestParam int status, @RequestParam int cellCount, @RequestParam String spec,
-                                        @RequestParam String content, @RequestParam String url)
+    public ResponseEntity<Product> insertProduct(HttpServletRequest request, HttpSession session, @RequestParam String category, @RequestParam String productName, @RequestParam int price,
+                                                 @RequestParam int stock, @RequestParam int status, @RequestParam int cellCount, @RequestParam String spec,
+                                                 @RequestParam String content, @RequestParam String url)
     {
+        HttpSession sellerId = request.getSession(false);
         String ins_category = request.getParameter("category");
         String ins_productName = request.getParameter("productName");
         int ins_price = Integer.parseInt(request.getParameter("price"));
@@ -73,13 +74,15 @@ public class ProductController {
         String ins_spec = request.getParameter("spec");
         String ins_content = request.getParameter("content");
         String ins_url = request.getParameter("url");
+        String ins_sellerId = (String) sellerId.getAttribute("sellerId");
+
         //시간
         LocalDateTime beforeDate = LocalDateTime.now();
         DateTimeFormatter afterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String ins_createAt = beforeDate.format(afterDate);
         String ins_updateAt = beforeDate.format(afterDate);
 
-       Product insertProduct = productService.insertProduct(ins_category, ins_productName, ins_price, ins_stock,
+       Product insertProduct = productService.insertProduct(ins_category, ins_productName, ins_sellerId,ins_price, ins_stock,
                 ins_status, ins_cellCount, ins_spec, ins_content, ins_url, ins_createAt, ins_updateAt).getBody();
 
         return ResponseEntity.ok(insertProduct);
