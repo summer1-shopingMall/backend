@@ -19,6 +19,6 @@ public interface CartService {
   CartResponseDto selectCart(Long id);
 
   //유저별 장바구니 리스트
-  List<CartResponseDto> listOrderByUserId(Long userId);
+  List<CartResponseDto> listOrderByUserId(String userId);
 
 }

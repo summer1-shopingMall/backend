@@ -52,7 +52,7 @@ public class CartServiceImpl implements CartService {
   }
 
   @Override
-  public List<CartResponseDto> listOrderByUserId(Long userId) {
+  public List<CartResponseDto> listOrderByUserId(String userId) {
     List<Cart> cartList = cartRepository.findByUserId(userId);
     List<CartResponseDto> cartResponseDtos = cartList
         .stream()

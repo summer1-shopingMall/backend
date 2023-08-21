@@ -19,7 +19,7 @@ public class Cart {
   private Long productId;
 
   @NotNull
-  private Long userId;
+  private String userId;
 
   @NotNull
   private int productPrice;

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class CartResponseDto {
   private Long id;
   private Long productId;
-  private Long userId;
+  private String userId;
   private int productPrice;
   private int productCount;
   private String productName;

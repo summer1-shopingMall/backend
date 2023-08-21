@@ -45,7 +45,7 @@ public class CartController {
     CartDto cartDto = new CartDto();
     cartDto.setProductId(productId);
     cartDto.setProductName(productResponseDto.getProductName());
-    cartDto.setUserId(userResponseDto.getId());
+    cartDto.setUserId(userResponseDto.getUserId());
     cartDto.setProductPrice(productResponseDto.getPrice());
     cartDto.setProductCount(stock);
 
@@ -57,12 +57,15 @@ public class CartController {
 
   @GetMapping("/listByUserId")
   @PreAuthorize("hasAnyRole('ROLE_USER')")
-  public ResponseEntity<List<CartResponseDto>> listByUserId(HttpServletRequest request, @RequestParam Long uId) {
-    //userid로 검색해서 특정 user의 cart list 출력
-    List<CartResponseDto> cartResponseDtoList = cartService.listOrderByUserId(uId);
-    return ResponseEntity.status(HttpStatus.OK).body(cartResponseDtoList);
-
+  public ResponseEntity<List<CartResponseDto>> listByUserId(HttpServletRequest request) {
     //로그인 시 로그인한 user의 cart list 출력
+    String userId = jwtTokenProvider.getUsername(request.getHeader("X-AUTH-TOKEN"));
+    UserResponseDto userResponseDto = userService.userByUserId(userId);
+
+    System.out.println("[OrderController] userId" + userId);
+
+    List<CartResponseDto> cartResponseDtoList = cartService.listOrderByUserId(userId);
+    return ResponseEntity.status(HttpStatus.OK).body(cartResponseDtoList);
   }
 
   //상품 개수 수정

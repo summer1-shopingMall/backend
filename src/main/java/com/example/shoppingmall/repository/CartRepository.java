@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
   //유저별 장바구니 리스트
-  List<Cart> findByUserId(Long userId);
+  List<Cart> findByUserId(String userId);
 
 }
