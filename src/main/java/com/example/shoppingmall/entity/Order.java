@@ -31,6 +31,8 @@ public class Order {
   // 유저 정보
   @NotNull
   private String userId;
+
+  private String userName;
   @NotNull
   private String address1;
   @NotNull
