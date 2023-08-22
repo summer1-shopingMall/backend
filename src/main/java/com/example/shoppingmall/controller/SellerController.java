@@ -26,6 +26,7 @@ public class SellerController {
         this.sellerService = sellerService;
     }
 
+    // 내 판매 물건에 대한 상태 변경
     @GetMapping("/orderList")
     public ResponseEntity<List<Order>> SelectOrderList(Authentication authentication)
     {
@@ -34,6 +35,7 @@ public class SellerController {
         return new ResponseEntity<>(selectOrderList, HttpStatus.OK);
     }
 
+    // 내 판매 물건에 대한 주문내역 전체 리스트
     @GetMapping("/updateOrder")
     public ResponseEntity<Order> UpdateOrder(HttpServletRequest request, @RequestParam Long id ,@RequestParam String status)
     {

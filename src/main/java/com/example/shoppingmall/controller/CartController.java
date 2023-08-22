@@ -41,7 +41,7 @@ public class CartController {
 
     System.out.println("[OrderController] userId" + userId);
 
-
+    //같은 제품을 또 넣는다면 합계로 나오게 변경하기!
     CartDto cartDto = new CartDto();
     cartDto.setProductId(productId);
     cartDto.setProductName(productResponseDto.getProductName());
@@ -73,10 +73,10 @@ public class CartController {
 
   @DeleteMapping("/delete")
   @PreAuthorize("hasAnyRole('ROLE_USER')")
-  public ResponseEntity<String> deleteOrder(HttpServletRequest request, @RequestParam Long id) throws Exception {
+  public ResponseEntity<String> deleteCart(HttpServletRequest request, @RequestParam Long id) throws Exception {
     cartService.delectCart(id);
     return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다.");
-
+    //입력한 번호가 없는 경우, 예외처리 만들기!
   }
 
 

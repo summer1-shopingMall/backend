@@ -4,14 +4,12 @@ import com.example.shoppingmall.entity.Order;
 import com.example.shoppingmall.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -23,7 +21,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/insertOrder")
+    @PostMapping("/insertOrder")
     public ResponseEntity<Order> insertOrder(HttpServletRequest request, HttpSession session, Principal principal, @RequestParam String address)
     {
         HttpSession userId = request.getSession(false);
@@ -37,4 +35,14 @@ public class OrderController {
         }
         return null;
     }
+
+//    @PostMapping("/insertCartList")
+//    public ResponseEntity<String> insertCartList(@RequestBody List<Order> dataList) {
+//        try {
+//            List<YourEntity> insertedData = yourService.insertListToDb(dataList);
+//            return ResponseEntity.ok("데이터가 성공적으로 입력되었습니다. 입력된 개수: " + insertedData.size());
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("오류가 발생했습니다: " + e.getMessage());
+//        }
+//    }
 }
