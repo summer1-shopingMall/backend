@@ -37,10 +37,10 @@ public class SellerController {
 
     // 내 판매 물건에 대한 주문내역 전체 리스트
     @GetMapping("/updateOrder")
-    public ResponseEntity<Order> UpdateOrder(HttpServletRequest request, @RequestParam Long id ,@RequestParam String status)
+    public ResponseEntity<Order> UpdateOrder(HttpServletRequest request, @RequestParam Long id ,@RequestParam int status)
     {
         Long upt_id = Long.valueOf(request.getParameter("id"));
-        String upt_status = request.getParameter("status");
+        int upt_status =Integer.parseInt(request.getParameter("status"));
         Order order = sellerService.updateStatus(upt_id,upt_status);
         if (order != null) {
             return ResponseEntity.ok(order);

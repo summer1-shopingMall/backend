@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
 
         order.setUserId(ins_Id);
-        order.setUserName(ins_name);
+        order.setUserId(ins_name);
         order.setAddress1(ins_address);
 
         Order insertOrder = orderRepository.save(order);

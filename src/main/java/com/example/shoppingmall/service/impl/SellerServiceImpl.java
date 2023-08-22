@@ -26,7 +26,7 @@ public class SellerServiceImpl implements SellerService {
 
     @Override
     @Transactional
-    public Order updateStatus(Long id, String status) {
+    public Order updateStatus(Long id, int status) {
         Order order = orderRepository.findById(id).orElse(null);
         if (order != null)
         {

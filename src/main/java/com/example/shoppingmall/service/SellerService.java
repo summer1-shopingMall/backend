@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SellerService {
     List<Order> SelectOrderList(Seller seller);
-    Order updateStatus(Long id, String status);
+    Order updateStatus(Long id, int status);
 }
