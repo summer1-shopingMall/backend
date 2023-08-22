@@ -32,7 +32,6 @@ public class Order {
   @NotNull
   private String userId;
 
-  private String userName;
   @NotNull
   private String address1;
   @NotNull
