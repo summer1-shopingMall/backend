@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -28,30 +29,33 @@ public class CommentController {
     }
 
     @PostMapping("/selectQnA")
-    public List<ProductQnA> selectQnA()
+    public List<ProductQnA> selectQnA(HttpSession session)
     {
-        List<ProductQnA> selectQnA = commentService.selectQnA();
+        Long productId = (Long) session.getAttribute("productId");
+        List<ProductQnA> selectQnA = commentService.selectQnA(productId);
         return selectQnA;
     }
 
     @PostMapping("/selectComment")
-    public List<ProductComment> selectComment()
+    public List<ProductComment> selectComment(HttpSession session)
     {
-        List<ProductComment> selectComment = commentService.selectComment();
+        Long productId = (Long) session.getAttribute("productId");
+        List<ProductComment> selectComment = commentService.selectComment(productId);
         return selectComment;
     }
 
     @PostMapping("/insertQnA")
-    public ResponseEntity<ProductQnA> insertQnA(HttpServletRequest request, Principal principal, @RequestParam String text)
+    public ResponseEntity<ProductQnA> insertQnA(HttpServletRequest request, Principal principal, HttpSession session, @RequestParam String text)
     {
 
         ResponseEntity<ProductQnA> insertQnA = null;
         System.out.println(principal);
         if (principal != null)
         {
+            Long productId = (Long) session.getAttribute("productId");
             String ins_name = principal.getName();
             String ins_text = request.getParameter("text");
-            insertQnA = commentService.insertQnA(ins_name, ins_text);
+            insertQnA = commentService.insertQnA(productId,ins_name, ins_text);
         }else
         {
             System.out.println("로그인을 먼저 해주세요");
@@ -61,17 +65,18 @@ public class CommentController {
     }
 
     @PostMapping("/insertComment")
-    public ResponseEntity<ProductComment> insertComment(HttpServletRequest request, Principal principal, @RequestParam String text)
+    public ResponseEntity<ProductComment> insertComment(HttpServletRequest request, Principal principal, HttpSession session, @RequestParam String text)
     {
         ResponseEntity<ProductComment> insertComment = null;
         if (principal != null)
         {
+            Long productId = (Long) session.getAttribute("productId");
             String ins_name =  principal.getName();
             String ins_text = request.getParameter("text");
             boolean checkProduct = productService.checkProduct(ins_name);
             if (checkProduct)
             {
-                insertComment = commentService.insertComment(ins_name, ins_text);
+                insertComment = commentService.insertComment(productId, ins_name, ins_text);
             }else
             {
                 System.out.println("로그인을 먼저 해주세요");

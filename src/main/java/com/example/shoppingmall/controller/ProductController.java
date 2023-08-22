@@ -119,9 +119,10 @@ public class ProductController {
     }
 
     @GetMapping("/getProduct")
-    public ResponseEntity<ProductResponseDto> productById(Long number) {
-        ProductResponseDto productResponseDto = productService.getProduct(number);
-        return ResponseEntity.status(HttpStatus.OK).body(productResponseDto);
+    public ProductResponseDto productById(Long id , HttpSession session) {
+        ProductResponseDto productResponseDto = productService.getProduct(id);
+        session.setAttribute("productId", id);
+        return productResponseDto;
     }
 
     @DeleteMapping("/deleteProduct")

@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface CommentService {
-    ResponseEntity<ProductQnA> insertQnA(String userId, String text);
-    ResponseEntity<ProductComment> insertComment(String userId, String text);
-    List<ProductQnA> selectQnA();
-    List<ProductComment> selectComment();
+    ResponseEntity<ProductQnA> insertQnA(Long productId,String userId, String text);
+    ResponseEntity<ProductComment> insertComment(Long productId, String userId, String text);
+    List<ProductQnA> selectQnA(Long productId);
+    List<ProductComment> selectComment(Long productId);
 }

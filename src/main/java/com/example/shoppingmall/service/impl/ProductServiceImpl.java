@@ -108,20 +108,30 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto getProduct(Long id) {
-        Product product = productRepository.getById(id);
-        ProductResponseDto productResponseDto = new ProductResponseDto();
-        productResponseDto.setCategory(product.getCategory());
-        productResponseDto.setProductName(product.getProductName());
-        productResponseDto.setPrice(product.getPrice());
-        productResponseDto.setStock(product.getStock());
-        productResponseDto.setStatus(product.getStatus());
-        productResponseDto.setCellCount(product.getCellCount());
-        productResponseDto.setSpec(product.getSpec());
-        productResponseDto.setContent(product.getContent());
-        productResponseDto.setUrl(product.getUrl());
-        productResponseDto.setViews(product.getViews());
+        Product product = productRepository.findById(id).orElse(null);
+        if(product != null)
+        {
+            ProductResponseDto productResponseDto = new ProductResponseDto();
+            productResponseDto.setId(product.getId());
+            productResponseDto.setCategory(product.getCategory());
+            productResponseDto.setSellerId(product.getSellerId());
+            productResponseDto.setProductName(product.getProductName());
+            productResponseDto.setPrice(product.getPrice());
+            productResponseDto.setStock(product.getStock());
+            productResponseDto.setStatus(product.getStatus());
+            productResponseDto.setCellCount(product.getCellCount());
+            productResponseDto.setSpec(product.getSpec());
+            productResponseDto.setContent(product.getContent());
+            productResponseDto.setUrl(product.getUrl());
+            productResponseDto.setViews(product.getViews());
+            productResponseDto.setCreatedAt(product.getCreatedAt());
+            productResponseDto.setUpdatedAt(product.getUpdatedAt());
 
-        return productResponseDto;
+            return productResponseDto;
+        }else
+        {
+            return null;
+        }
     }
 
     @Override

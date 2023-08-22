@@ -13,6 +13,8 @@ public class ProductResponseDto {
 
   private String productName;
 
+  private String sellerId;
+
   private int price;
 
   private int stock;
@@ -29,6 +31,10 @@ public class ProductResponseDto {
 
   private int views;
 
+  private String createdAt;
+  //상품 등록 날자
+  private String updatedAt;
+
   public ProductResponseDto() {
   }
 
@@ -44,5 +50,8 @@ public class ProductResponseDto {
     this.content = product.getContent();
     this.url = product.getUrl();
     this.views = product.getViews();
+    this.createdAt = product.getCreatedAt();
+    this.updatedAt = product.getUpdatedAt();
+    this.sellerId = product.getSellerId();
   }
 }
