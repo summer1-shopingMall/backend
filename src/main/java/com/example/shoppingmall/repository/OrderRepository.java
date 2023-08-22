@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    //셀러로 주문 뽑아오기
     List<Order> findBySeller(Seller seller);
-    //상품을 샀는지 안샀는지 체크
-    boolean existsByUserName(String userName);
+    boolean existsByUserId(String userId);
 }

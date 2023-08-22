@@ -10,8 +10,7 @@ public interface SignService {
 
   SignUpResultDto SellerSignUp( String sellerID,  String sellerPw,
                                 String sellerName,  String phoneNumber,
-                                String companyNumber,  String boss,
-                                String companyName,  String address1,
+                                String companyNumber, String companyName,  String address1,
                                 String address2,  String address3,
                                 String bank,  String receiveName,
                                 String bankAddress);

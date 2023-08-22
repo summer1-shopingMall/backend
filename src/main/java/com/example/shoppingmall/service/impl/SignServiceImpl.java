@@ -52,15 +52,14 @@ public class SignServiceImpl implements SignService {
   @Override
   public SignUpResultDto SellerSignUp(String sellerID,  String sellerPw,
                                       String sellerName,  String phoneNumber,
-                                      String companyNumber,  String boss,
-                                      String companyName,  String address1,
+                                      String companyNumber, String companyName,  String address1,
                                       String address2,  String address3,
                                       String bank,  String receiveName,
                                       String bankAddress) {
     System.out.println("[seller] 회원가입");
     Seller seller;
     seller = Seller.builder().sellerID(sellerID).sellerName(sellerName).phoneNumber(phoneNumber).companyNumber(companyNumber)
-            .boss(boss).companyName(companyName).address1(address1).address2(address2).address3(address3).bank(bank).receiveName(receiveName).bankAddress(bankAddress)
+            .companyName(companyName).address1(address1).address2(address2).address3(address3).bank(bank).receiveName(receiveName).bankAddress(bankAddress)
             .sellerPw(passwordEncoder.encode(sellerPw)).roles(Collections.singletonList("ROLE_SELLER")).build();
     Seller sellerSaved = sellerRepository.save(seller);
     SignUpResultDto signUpResultDto = new SignUpResultDto();

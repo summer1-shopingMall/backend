@@ -52,14 +52,14 @@ public class SignController {
   @PostMapping("/seller-sign-up")
   public SignUpResultDto SellerSignUp(@RequestParam String sellerID, @RequestParam String sellerPw,
                                       @RequestParam String sellerName,  @RequestParam String phoneNumber,
-                                      @RequestParam String companyNumber, @RequestParam String boss,
+                                      @RequestParam String companyNumber,
                                       @RequestParam String companyName,@RequestParam String address1,
                                       @RequestParam String address2,@RequestParam String address3,
                                       @RequestParam String bank,@RequestParam String receiveName,
                                       @RequestParam String bankAddress) throws RuntimeException
   {
-    SignUpResultDto signUpResultDto = signService.SellerSignUp(sellerID, sellerPw, sellerName,phoneNumber,companyNumber,
-            boss,companyName,address1,address2,address3,bank,receiveName,bankAddress);
+    SignUpResultDto signUpResultDto = signService.SellerSignUp(sellerID, sellerPw, sellerName,phoneNumber,companyNumber
+            ,companyName,address1,address2,address3,bank,receiveName,bankAddress);
     return signUpResultDto;
   }
 

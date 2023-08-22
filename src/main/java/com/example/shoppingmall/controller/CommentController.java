@@ -73,6 +73,7 @@ public class CommentController {
             Long productId = (Long) session.getAttribute("productId");
             String ins_name =  principal.getName();
             String ins_text = request.getParameter("text");
+            //이부분 추후에 수정필요
             boolean checkProduct = productService.checkProduct(ins_name);
             if (checkProduct)
             {

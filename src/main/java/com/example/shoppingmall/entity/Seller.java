@@ -41,8 +41,6 @@ public class Seller implements UserDetails {
     @NotNull
     String companyNumber;//사업자 등록 번호
     @NotNull
-    String boss;//대표명
-    @NotNull
     String companyName;//상호
 
     String address1;

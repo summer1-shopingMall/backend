@@ -147,8 +147,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean checkProduct(String userName)
+    public boolean checkProduct(String userId)
     {
-        return orderRepository.existsByUserName(userName);
+        return orderRepository.existsByUserId(userId);
     }
 }
