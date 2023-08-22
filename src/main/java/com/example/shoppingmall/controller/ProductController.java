@@ -64,7 +64,7 @@ public class ProductController {
                                                  @RequestParam int stock, @RequestParam int status, @RequestParam int cellCount, @RequestParam String spec,
                                                  @RequestParam String content, @RequestParam String url)
     {
-        HttpSession sellerId = request.getSession(false);
+
         String ins_category = request.getParameter("category");
         String ins_productName = request.getParameter("productName");
         int ins_price = Integer.parseInt(request.getParameter("price"));
@@ -74,7 +74,7 @@ public class ProductController {
         String ins_spec = request.getParameter("spec");
         String ins_content = request.getParameter("content");
         String ins_url = request.getParameter("url");
-        String ins_sellerId = (String) sellerId.getAttribute("sellerId");
+        String ins_sellerId = (String) session.getAttribute("sellerId");
 
         //시간
         LocalDateTime beforeDate = LocalDateTime.now();

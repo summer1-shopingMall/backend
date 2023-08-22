@@ -6,6 +6,8 @@ import com.example.shoppingmall.service.SignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/sign-api")
 public class SignController {
@@ -37,8 +39,9 @@ public class SignController {
   }
 
   @PostMapping("/seller-sign-in")
-  public SignInResultDto SellerSignIn(@RequestParam String id, @RequestParam String password) throws RuntimeException
+  public SignInResultDto SellerSignIn(HttpSession session, @RequestParam String id, @RequestParam String password) throws RuntimeException
   {
+    session.setAttribute("sellerId", id);
     SignInResultDto signInResultDto = signService.SellerSignIn(id, password);
     if(signInResultDto.getCode() == 0) {
       System.out.println("[SignIn] 정상적으로 로그인되었습니다. "+ signInResultDto.getToken());
