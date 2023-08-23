@@ -14,7 +14,7 @@ public class ProductComment {
 
     private Long productId;
 
-    private String userName;
+    private String userId;
 
     private String text;
 }

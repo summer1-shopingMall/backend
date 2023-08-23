@@ -6,6 +6,8 @@ import com.example.shoppingmall.service.CommentService;
 import com.example.shoppingmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,9 +55,9 @@ public class CommentController {
         if (principal != null)
         {
             Long productId = (Long) session.getAttribute("productId");
-            String ins_name = principal.getName();
+            String ins_id = principal.getName();
             String ins_text = request.getParameter("text");
-            insertQnA = commentService.insertQnA(productId,ins_name, ins_text);
+            insertQnA = commentService.insertQnA(productId,ins_id, ins_text);
         }else
         {
             System.out.println("로그인을 먼저 해주세요");
@@ -71,13 +73,13 @@ public class CommentController {
         if (principal != null)
         {
             Long productId = (Long) session.getAttribute("productId");
-            String ins_name =  principal.getName();
+            String ins_id =  principal.getName();//현재로그인 되어있는 사용자의 아이디를 가지고 온다
             String ins_text = request.getParameter("text");
             //이부분 추후에 수정필요
-            boolean checkProduct = productService.checkProduct(ins_name);
+            boolean checkProduct = productService.checkProduct(ins_id);
             if (checkProduct)
             {
-                insertComment = commentService.insertComment(productId, ins_name, ins_text);
+                insertComment = commentService.insertComment(productId, ins_id, ins_text);
             }else
             {
                 System.out.println("로그인을 먼저 해주세요");

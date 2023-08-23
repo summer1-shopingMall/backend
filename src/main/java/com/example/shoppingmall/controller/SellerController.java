@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -28,11 +29,11 @@ public class SellerController {
 
     // 내 판매 물건에 대한 상태 변경
     @GetMapping("/orderList")
-    public ResponseEntity<List<Order>> SelectOrderList(Authentication authentication)
+    public List<Order> SelectOrderList(Principal principal)
     {
-        Seller seller = (Seller)authentication.getPrincipal();
-        List<Order>selectOrderList = sellerService.SelectOrderList(seller);
-        return new ResponseEntity<>(selectOrderList, HttpStatus.OK);
+        String sellerId = principal.getName();
+        List<Order> selectOrderList = sellerService.SelectOrderList(sellerId);
+        return selectOrderList;
     }
 
     // 내 판매 물건에 대한 주문내역 전체 리스트

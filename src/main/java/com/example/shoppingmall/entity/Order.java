@@ -10,16 +10,16 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "order")
+@Table(name = "orders")
 @NoArgsConstructor
 public class Order {
   //판매자 입장에서 보이는 테이블
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @ManyToOne
-  @JoinColumn(name = "seller_id", nullable = false)
-  private Seller seller;
+
+  @NotNull
+  private String sellerId;//그냥 문자열값으로 받아서 해보려고
   //제품 관련 정보
   @NotNull
   private Long productId;
@@ -48,8 +48,8 @@ public class Order {
   private int status;
 
   //주문취소 상태 알림
-  private boolean refundCheck;
+  //private boolean refundCheck;//이부분에서 DB오류가난다 혜민아
 
-  private LocalDateTime orderDate;
+  private String orderDate;
 
 }

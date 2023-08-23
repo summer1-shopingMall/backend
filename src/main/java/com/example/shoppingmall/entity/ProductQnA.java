@@ -14,7 +14,7 @@ public class ProductQnA{
 
     private Long productId;
 
-    private String userName;
+    private String userId;
 
     private String text;
 }

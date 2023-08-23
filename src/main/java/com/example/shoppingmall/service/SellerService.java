@@ -6,6 +6,6 @@ import com.example.shoppingmall.entity.Seller;
 import java.util.List;
 
 public interface SellerService {
-    List<Order> SelectOrderList(Seller seller);
+    List<Order> SelectOrderList(String seller);
     Order updateStatus(Long id, int status);
 }

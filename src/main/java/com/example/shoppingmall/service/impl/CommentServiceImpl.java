@@ -52,7 +52,7 @@ public class CommentServiceImpl implements CommentService {
         ProductQnA QnA = new ProductQnA();
 
         QnA.setProductId(productId);
-        QnA.setUserName(userId);
+        QnA.setUserId(userId);
         QnA.setText(text);
 
         ProductQnA insertQnA = qnARepository.save(QnA);
@@ -64,7 +64,7 @@ public class CommentServiceImpl implements CommentService {
         ProductComment comment = new ProductComment();
 
         comment.setProductId(productId);
-        comment.setUserName(userId);
+        comment.setUserId(userId);
         comment.setText(text);
 
         ProductComment insertComment = commentRepository.save(comment);
